@@ -1,0 +1,49 @@
+class MinMaxStack:
+    def __init__(self):
+        self.stack =
+        self.min_stack =
+        self.max_stack =
+
+    def push(self, x):
+        """Pushes an element onto the stack."""
+        self.stack.append(x)
+
+        if not self.min_stack or x <= self.min_stack[-1]:
+            self.min_stack.append(x)
+        else:
+            self.min_stack.append(self.min_stack[-1])
+
+        if not self.max_stack or x >= self.max_stack[-1]:
+            self.max_stack.append(x)
+        else:
+            self.max_stack.append(self.max_stack[-1])
+
+    def pop(self):
+        """Removes and returns the top element of the stack."""
+        if not self.stack:
+            return None  # Or raise an exception
+
+        self.min_stack.pop()
+        self.max_stack.pop()
+        return self.stack.pop()
+
+    def top(self):
+        """Returns the top element of the stack without removing it."""
+        if not self.stack:
+            return None  # Or raise an exception
+        return self.stack[-1]
+
+    def getMin(self):
+        """Returns the minimum element in the stack."""
+        if not self.min_stack:
+            return None  # Or raise an exception
+        return self.min_stack[-1]
+
+    def getMax(self):
+        """Returns the maximum element in the stack."""
+        if not self.max_stack:
+            return None  # Or raise an exception
+        return self.max_stack[-1]
+
+# Example Usage
+stack
